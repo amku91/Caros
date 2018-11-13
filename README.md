@@ -1,4 +1,4 @@
-# Imago | A Image Gallery
+# Caros | A Image Carousel
 
 # Generated Through
 
