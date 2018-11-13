@@ -23,15 +23,10 @@ import { PreviewComponent } from '../preview/preview.component';
 export class GalleryComponent implements OnInit {
 
   public preImageData: any = [];
-  public perPageImageSet:number = 4;
+  private pageLength:number = 4;
+  private activePage:number = 1;
+  private activeDataSource: any = [];
 
-  allImageData: any = [];
-  newUploadedImageData: any = [];
-  length: number = 0;
-  pageSize: number = 15;
-  pageSizeOptions: number[] = [10, 15, 25, 50];
-  pageEvent: PageEvent;
-  activePageData: any = [];
   constructor(public imageService: ImageService, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -49,36 +44,31 @@ export class GalleryComponent implements OnInit {
     /** Loop and load pre defined images */
     this.imageService.getPreImages().subscribe(data => {
       let rowData: any = data;
-      console.log("Image data loaded");
-      console.log(rowData);
       this.preImageData = rowData;
+      this.activeDataSource = this.getBlockData(this.preImageData);
     }, error => {
       this.imageService.showSnackBar("Unable to connect with server.", "Ok");
     });
   }
 
   /**
-  * @name getGridLayoutData
+  * @name getBlockData
   * @param array of images object
-  * @description Used to make five column grid layout
-  * @returns formatted output
+  * @description Used to make 4 block data
+  * @returns formatted output according to block
   */
-  getGridLayoutData(rowData: any) {
-    let result: any = [];
-    let i: number;
-    let j: number;
-    let chunk: number = 5;
-    /** make chunk array where each element containing 5 images */
-    for (i = 0, j = rowData.length; i < j; i += chunk) {
-      let temparray = rowData.slice(i, i + chunk);
-      result.push(temparray);
-    }
-    return result;
+  getBlockData(rowData: any): any {
+    let pageToNavigate = this.activePage * this.pageLength;
+    pageToNavigate = (rowData.length > pageToNavigate ? pageToNavigate : rowData.length);
+    let startIndex = ((this.activePage - 1) * this.pageLength);
+    console.log("starrt index="+startIndex);
+    console.log("pagetonavigate="+pageToNavigate);
+    return rowData.slice(startIndex, pageToNavigate);
   }
 
   /**
   * @name openViewDialog
-  * @param image id, image type
+  * @param image url
   * @description Used to show zoomed view dialog
   * @returns void
   */

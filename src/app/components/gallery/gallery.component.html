@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="col-md-10 rightContainer">
-            <div class="row" *ngFor="let imageData of preImageData">
+            <div class="row" *ngFor="let imageData of activeDataSource">
               <h6>{{imageData.title}}</h6>
               <div class="col-md-2" *ngFor="let image of imageData.images">
                 <mat-card class="gallery-card" (click)="openViewDialog(image, '')">
@@ -29,7 +29,7 @@
                 </mat-card>
               </div>
             </div>
-            <div class="row"><div class="col-md-12"><div class="clearfix"></div></div></div>
+            <div class="row"><div class="col-md-12"><br/><br/><br/><br/></div></div>
           </div>
           <div class="col-md-1">
             <div class="arrowsr" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
