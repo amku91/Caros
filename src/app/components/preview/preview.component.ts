@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { ImageService } from '../../services/image/image.service';
-import { element } from '@angular/core/src/render3/instructions';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-preview',
@@ -16,9 +16,12 @@ import { element } from '@angular/core/src/render3/instructions';
 export class PreviewComponent implements OnInit {
 
   public imageURL: string;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private imageService: ImageService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<PreviewComponent>) { }
 
   ngOnInit() {
     this.imageURL = this.data.url;
+  }
+  closeImage():void{
+    this.dialogRef.close();
   }
 }

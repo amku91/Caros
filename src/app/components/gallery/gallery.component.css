@@ -27,6 +27,12 @@
     max-height: calc(100vh);
     overflow-y: scroll;
 }
+.blocktitle{
+    margin-left: 15px;
+}
+.mat-divider{
+    margin-top: -5px;
+}
 
 .loading-indicator {
     position: fixed;
@@ -42,7 +48,7 @@
 }
 
 .heightfixed600{
-    height: 600px;
+    height: calc(100vh - 110px);
     position: relative;
 }
 
@@ -90,9 +96,12 @@ margin: 10px 13px;
     display: block;
     margin: 10px 11px;
 }
+.arrow-top-100{
+    top: 100px !important;
+}
 @media (max-width: 599px){
     .mat-card-image {
-        width: calc(100% + 48px);
+        /* width: calc(100% + 48px); */
     }
 }
 

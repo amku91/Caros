@@ -113,10 +113,6 @@ export class GalleryComponent implements OnInit {
         url: url,
       }
     });
-    /** Reload images after closing dialog */
-    dialogRef.afterClosed().subscribe(result => {
-      this.showPreImages();
-    });
   }
 
 }

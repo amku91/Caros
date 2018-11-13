@@ -11,18 +11,19 @@ import { AppRoutingModule } from './app.routing';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+
+
+
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatSliderModule} from '@angular/material/slider';
+
+
+
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -52,19 +53,14 @@ import { PreviewComponent } from './components/preview/preview.component';
     MatDialogModule,
     MatTableModule,
     MatCardModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatIconModule,
     MatSidenavModule,
-    MatSliderModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatChipsModule,
-    MatProgressBarModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDividerModule
   ],
   exports: [
     NavbarComponent,

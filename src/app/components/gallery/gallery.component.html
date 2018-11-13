@@ -3,38 +3,51 @@
     <app-navbar></app-navbar>
   </div>
   <div class="container-fluid">
-    <div class="row margin10">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <span class="pull-left">
-          <h4>Image Carousel</h4>
+    <div class="row">
+      <div class="col-sm-3 col-xs-3 col-md-1 col-lg-1">
+        <div class="arrowsl arrow-top-100 arrow-relative hidden-md hidden-lg" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
+          <i class="material-icons">arrow_back_ios</i>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-6 col-md-10 col-lg-10">
+        <span class="">
+          <h4 class="">Image Carousel</h4>
+          <br/>
         </span>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-sm-3 col-xs-3 col-md-1 col-lg-1">
+        <div class="arrowsr arrow-top-100 hidden-md hidden-lg" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
+          <i class="material-icons">arrow_forward_ios</i>
+        </div>
+      </div>
     </div>
+    <div class="clearfix"></div>
     <div class="row">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-md-1 heightfixed600">
+          <div class="col-md-1 col-lg-1 hidden-sm hidden-xs heightfixed600">
             <div class="arrowsl" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
               <i class="material-icons">arrow_back_ios</i>
             </div>
           </div>
           <div class="col-md-10 rightContainer">
-              <div class="loading-indicator">
+            <div class="loading-indicator">
               <mat-spinner *ngIf="showLoading" mode="indeterminate"></mat-spinner>
-              </div>
+            </div>
             <div class="row" *ngFor="let imageData of activeDataSource">
-              <h6>{{imageData.title}}</h6>
+              <h6 class="blocktitle">{{imageData.title}}<mat-divider [inset]="true"></mat-divider>
+              </h6>
               <div class="col-md-2" *ngFor="let image of imageData.images">
                 <mat-card class="gallery-card" (click)="openViewDialog(image)">
                   <img mat-card-image src="{{image}}" alt="Image">
                 </mat-card>
               </div>
             </div>
-            <div class="row"><div class="col-md-12"><br/><br/><br/><br/></div></div>
+            <div class="row">
+              <div class="col-md-12"><br /><br /><br /><br /></div>
+            </div>
           </div>
-          <div class="col-md-1 heightfixed600">
+          <div class="col-md-1 col-lg-1 hidden-sm hidden-xs heightfixed600">
             <div class="arrowsr" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
               <i class="material-icons">arrow_forward_ios</i>
             </div>
