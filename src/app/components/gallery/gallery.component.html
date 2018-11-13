@@ -2,36 +2,37 @@
   <div class="row">
     <app-navbar></app-navbar>
   </div>
-  <div class="container-fluid rightContainer">
+  <div class="container-fluid">
     <div class="row margin10">
-      <div class="col-md-1">
-        
-      </div>
+      <div class="col-md-1"></div>
       <div class="col-md-10">
         <span class="pull-left">
-          <h4>Image Gallery</h4>
+          <h4>Image Carousel</h4>
         </span>
       </div>
-      <div class="col-md-1">
-        
-      </div>
+      <div class="col-md-1"></div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="row" *ngFor="let imageData of preImageData">
+        <div class="row">
           <div class="col-md-1">
-            {{imageData.title}}
-            <div class="arrowsl" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image">
+            <div class="arrowsl" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
               <i class="material-icons">arrow_back_ios</i>
             </div>
           </div>
-          <div class="col-md-2" *ngFor="let image of imageData.images">
-            <mat-card class="gallery-card" (click)="openViewDialog(image, '')">
-              <img mat-card-image src="{{image}}" alt="Image">
-            </mat-card>
+          <div class="col-md-10 rightContainer">
+            <div class="row" *ngFor="let imageData of preImageData">
+              <h6>{{imageData.title}}</h6>
+              <div class="col-md-2" *ngFor="let image of imageData.images">
+                <mat-card class="gallery-card" (click)="openViewDialog(image, '')">
+                  <img mat-card-image src="{{image}}" alt="Image">
+                </mat-card>
+              </div>
+            </div>
+            <div class="row"><div class="col-md-12"><div class="clearfix"></div></div></div>
           </div>
           <div class="col-md-1">
-            <div class="arrowsr" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image">
+            <div class="arrowsr" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
               <i class="material-icons">arrow_forward_ios</i>
             </div>
           </div>
