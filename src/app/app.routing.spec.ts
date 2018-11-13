@@ -2,7 +2,6 @@ import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { UploadComponent } from './components/upload/upload.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -30,6 +29,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 import {routes} from './app.routing';
 import {Router} from "@angular/router";
 import {Location} from "@angular/common";
@@ -47,7 +48,6 @@ describe('Router: App', () => {
       declarations: [
         AppComponent,
         GalleryComponent,
-        UploadComponent,
         PreviewComponent,
         NavbarComponent
       ],
@@ -78,7 +78,9 @@ describe('Router: App', () => {
         MatAutocompleteModule,
         MatToolbarModule,
         MatTooltipModule,
-        HttpModule
+        HttpModule,
+        MatProgressSpinnerModule,
+        MatDividerModule
       ],
     }).compileComponents();
     router = TestBed.get(Router);
@@ -87,14 +89,14 @@ describe('Router: App', () => {
     fixture = TestBed.createComponent(AppComponent);
     router.initialNavigation();
   }));
-  it('navigate to "" redirects you to /gallery', fakeAsync(() => { 
+  it('navigate to "" redirects you to /carousel', fakeAsync(() => { 
     router.navigate(['']); 
     tick(); 
-    expect(location.path()).toBe('/gallery'); 
+    expect(location.path()).toBe('/carousel'); 
   }));
-  it('navigate to any url redirects you to /gallery', fakeAsync(() => { 
+  it('navigate to any url redirects you to /carousel', fakeAsync(() => { 
     router.navigate(['/wrongpath']); 
     tick(); 
-    expect(location.path()).toBe('/gallery'); 
+    expect(location.path()).toBe('/carousel'); 
   }));
 });

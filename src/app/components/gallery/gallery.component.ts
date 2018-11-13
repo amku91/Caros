@@ -17,7 +17,7 @@ import { PreviewComponent } from '../preview/preview.component';
 })
 /**
  * @name GalleryComponent
- * @description Created to show image on home page and paginate to next set of blocks
+ * @description Created to show image on home page and paginate to next set of image blocks
  * @author Amit Kumar
  */
 export class GalleryComponent implements OnInit {
@@ -25,10 +25,10 @@ export class GalleryComponent implements OnInit {
   private preImageData: any = [];
   private pageLength:number = 4;
   private activePage:number = 1;
-  private activeDataSource: any = [];
-  private disableBackArrow:boolean = true;
-  private disableForwardArrow:boolean = true;
-  private showLoading:boolean = true;
+  public activeDataSource: any = [];
+  public disableBackArrow:boolean = true;
+  public disableForwardArrow:boolean = true;
+  public showLoading:boolean = true;
 
   constructor(public imageService: ImageService, public dialog: MatDialog) { }
 
@@ -79,19 +79,26 @@ export class GalleryComponent implements OnInit {
     }else{
       this.disableBackArrow = false;
     }
-    
-    console.log("starrt index="+startIndex);
-    console.log("pagetonavigate="+pageToNavigate);
     return rowData.slice(startIndex, pageToNavigate);
   }
 
+  /**
+  * @name loadNextImage
+  * @param void
+  * @description Used to show next image set
+  * @returns void
+  */
   loadNextImage(): void{
     this.activePage = this.activePage + 1;
-    console.log(this.activePage);
     this.activeDataSource = this.getBlockData(this.preImageData);
-    console.log(this.preImageData);
   }
 
+  /**
+  * @name loadPreviousImage
+  * @param void
+  * @description Used to show previous image set
+  * @returns void
+  */
   loadPreviousImage():void{
     this.activePage = this.activePage - 1;
     this.activeDataSource = this.getBlockData(this.preImageData);

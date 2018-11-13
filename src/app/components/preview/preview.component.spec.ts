@@ -1,11 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../../app.component';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { GalleryComponent } from '../../components/gallery/gallery.component';
-import { UploadComponent } from '../../components/upload/upload.component';
 import { PreviewComponent } from '../../components/preview/preview.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -34,6 +33,8 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpModule } from '@angular/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 describe('PreviewComponent', () => {
@@ -45,7 +46,6 @@ describe('PreviewComponent', () => {
       declarations: [
         AppComponent,
         GalleryComponent,
-        UploadComponent,
         PreviewComponent,
         NavbarComponent
       ],
@@ -78,38 +78,17 @@ describe('PreviewComponent', () => {
         MatAutocompleteModule,
         MatToolbarModule,
         MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatDividerModule,
         HttpModule,
       ],
       providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {id: "imago/158466-800x600", type: "cloud", imageData:[{
-          "public_id": "imago/158466-800x600",
-          "format": "jpg",
-          "version": 1539411112,
-          "resource_type": "image",
-          "type": "cloud",
-          "created_at": "2018-10-13T06:11:52Z",
-          "bytes": 347965,
-          "width": 800,
-          "height": 600,
-          "url": "http://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg",
-          "secure_url": "https://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg"
-      }]}},
-      { provide: MatDialogModule, useValue: {id: "imago/158466-800x600", type: "cloud", imageData:[{
-        "public_id": "imago/158466-800x600",
-        "format": "jpg",
-        "version": 1539411112,
-        "resource_type": "image",
-        "type": "cloud",
-        "created_at": "2018-10-13T06:11:52Z",
-        "bytes": 347965,
-        "width": 800,
-        "height": 600,
-        "url": "http://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg",
-        "secure_url": "https://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg"
-    }]}},
-    ],
+        { provide: MAT_DIALOG_DATA, useValue: { url: "https://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg" } },
+        { provide: MatDialogRef, useValue: { MatDialogRef } },
+        { provide: MatDialogModule, useValue: { url: "https://res.cloudinary.com/remphi-internet-pvt-ltd/image/upload/v1539411112/imago/158466-800x600.jpg" } },
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

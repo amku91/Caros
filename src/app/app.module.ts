@@ -7,19 +7,12 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app.routing';
-
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
-
-
-
 import {MatIconModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-
-
-
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -30,7 +23,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
 
-import { environment } from '../environments/environment';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PreviewComponent } from './components/preview/preview.component';
 

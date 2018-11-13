@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
 import { NavbarComponent } from './navbar.component';
 import { GalleryComponent } from '../components/gallery/gallery.component';
-import { UploadComponent } from '../components/upload/upload.component';
 import { PreviewComponent } from '../components/preview/preview.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -33,6 +32,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -43,7 +44,6 @@ describe('NavbarComponent', () => {
       declarations: [
         AppComponent,
         GalleryComponent,
-        UploadComponent,
         PreviewComponent,
         NavbarComponent
       ],
@@ -76,6 +76,8 @@ describe('NavbarComponent', () => {
         MatAutocompleteModule,
         MatToolbarModule,
         MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatDividerModule
       ],
       providers: [
         { provide: GalleryComponent, useValue:{title:""}

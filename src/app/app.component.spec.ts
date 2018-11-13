@@ -2,7 +2,6 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-import { UploadComponent } from './components/upload/upload.component';
 import { PreviewComponent } from './components/preview/preview.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -30,6 +29,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 TestBed.configureTestingModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -40,7 +41,6 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         GalleryComponent,
-        UploadComponent,
         PreviewComponent,
         NavbarComponent
       ],
@@ -71,6 +71,8 @@ describe('AppComponent', () => {
         MatAutocompleteModule,
         MatToolbarModule,
         MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatDividerModule
       ],
     }).compileComponents();
   }));
@@ -79,9 +81,9 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'Imago'`, async(() => {
+  it(`should have as title 'Carso'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Imago');
+    expect(app.title).toEqual('Carso');
   }));
 });

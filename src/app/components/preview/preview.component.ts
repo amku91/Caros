@@ -21,6 +21,13 @@ export class PreviewComponent implements OnInit {
   ngOnInit() {
     this.imageURL = this.data.url;
   }
+
+  /**
+  * @name closeImage
+  * @param void
+  * @description Used to destroy dialog
+  * @returns void
+  */
   closeImage():void{
     this.dialogRef.close();
   }
