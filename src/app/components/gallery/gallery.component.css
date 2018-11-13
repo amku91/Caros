@@ -4,8 +4,8 @@
     cursor: pointer; 
   }
   .mat-card-image{
-      height: 150px;
-      margin-bottom: -24px !important;
+      height: 250px;
+      margin-bottom: -12px !important;
   }
   .margin10{
     margin: 10px 0px;
@@ -28,10 +28,8 @@
     overflow-y: scroll;
 }
 .blocktitle{
-    margin-left: 15px;
-}
-.mat-divider{
-    margin-top: -5px;
+    display: block !important;
+    margin: 10px 0px 0px auto !important;
 }
 
 .loading-indicator {
@@ -48,8 +46,12 @@
 }
 
 .heightfixed600{
-    height: calc(100vh - 110px);
+    height: calc(50vh - 100px);
     position: relative;
+}
+.disabledarrow{
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 .arrowsl{

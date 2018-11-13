@@ -79,7 +79,16 @@ export class GalleryComponent implements OnInit {
     }else{
       this.disableBackArrow = false;
     }
-    return rowData.slice(startIndex, pageToNavigate);
+    let returnData = rowData.slice(startIndex, pageToNavigate);
+    /**Get Random Index Image */
+    let randomData = returnData.map(imageRow => {
+      let randomIndex = Math.floor(Math.random() * imageRow.images.length);
+      let randomData = imageRow.images[randomIndex];
+      imageRow.images = [];
+      imageRow.images.push(randomData);
+      return imageRow;
+    });
+    return randomData;
   }
 
   /**

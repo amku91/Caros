@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 col-xs-3 col-md-1 col-lg-1">
-        <div class="arrowsl arrow-top-100 arrow-relative hidden-md hidden-lg" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
+        <div class="arrowsl {{disableBackArrow ? 'disabledarrow' : ''}} arrow-top-100 arrow-relative hidden-md hidden-lg" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
           <i class="material-icons">arrow_back_ios</i>
         </div>
       </div>
@@ -16,7 +16,7 @@
         </span>
       </div>
       <div class="col-sm-3 col-xs-3 col-md-1 col-lg-1">
-        <div class="arrowsr arrow-top-100 hidden-md hidden-lg" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
+        <div class="arrowsr {{disableForwardArrow ? 'disabledarrow' : ''}} arrow-top-100 hidden-md hidden-lg" (click)="loadNextImage();" matTooltip="Next Image Set">
           <i class="material-icons">arrow_forward_ios</i>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-1 col-lg-1 hidden-sm hidden-xs heightfixed600">
-            <div class="arrowsl" *ngIf="!disableBackArrow" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
+            <div class="arrowsl {{disableBackArrow ? 'disabledarrow' : ''}}" (click)="loadPreviousImage();" matTooltip="Previous Image Set">
               <i class="material-icons">arrow_back_ios</i>
             </div>
           </div>
@@ -34,12 +34,13 @@
             <div class="loading-indicator">
               <mat-spinner *ngIf="showLoading" mode="indeterminate"></mat-spinner>
             </div>
-            <div class="row" *ngFor="let imageData of activeDataSource">
-              <h6 class="blocktitle">{{imageData.title}}<mat-divider [inset]="true"></mat-divider>
-              </h6>
-              <div class="col-md-2" *ngFor="let image of imageData.images">
-                <mat-card class="gallery-card" (click)="openViewDialog(image)">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let imageData of activeDataSource">
+                <mat-card class="gallery-card" *ngFor="let image of imageData.images" (click)="openViewDialog(image)">
                   <img mat-card-image src="{{image}}" alt="Image">
+                  <mat-card-actions>
+                      <h6 class="blocktitle">{{imageData.title}}</h6>
+                  </mat-card-actions>
                 </mat-card>
               </div>
             </div>
@@ -48,7 +49,7 @@
             </div>
           </div>
           <div class="col-md-1 col-lg-1 hidden-sm hidden-xs heightfixed600">
-            <div class="arrowsr" *ngIf="!disableForwardArrow" (click)="loadNextImage();" matTooltip="Next Image Set">
+            <div class="arrowsr {{disableForwardArrow ? 'disabledarrow' : ''}}" (click)="loadNextImage();" matTooltip="Next Image Set">
               <i class="material-icons">arrow_forward_ios</i>
             </div>
           </div>
