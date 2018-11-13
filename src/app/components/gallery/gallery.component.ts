@@ -17,7 +17,7 @@ import { PreviewComponent } from '../preview/preview.component';
 })
 /**
  * @name GalleryComponent
- * @description Created to show image on home page and paginate to next set of image blocks
+ * @description Created to show image on home page and paginate to next set of image blocks from endpoint API
  * @author Amit Kumar
  */
 export class GalleryComponent implements OnInit {
