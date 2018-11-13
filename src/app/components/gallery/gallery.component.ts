@@ -22,10 +22,13 @@ import { PreviewComponent } from '../preview/preview.component';
  */
 export class GalleryComponent implements OnInit {
 
-  public preImageData: any = [];
+  private preImageData: any = [];
   private pageLength:number = 4;
   private activePage:number = 1;
   private activeDataSource: any = [];
+  private disableBackArrow:boolean = true;
+  private disableForwardArrow:boolean = true;
+  private showLoading:boolean = true;
 
   constructor(public imageService: ImageService, public dialog: MatDialog) { }
 
@@ -46,6 +49,8 @@ export class GalleryComponent implements OnInit {
       let rowData: any = data;
       this.preImageData = rowData;
       this.activeDataSource = this.getBlockData(this.preImageData);
+      /**Hide loading */
+      this.showLoading = false;
     }, error => {
       this.imageService.showSnackBar("Unable to connect with server.", "Ok");
     });
@@ -59,11 +64,37 @@ export class GalleryComponent implements OnInit {
   */
   getBlockData(rowData: any): any {
     let pageToNavigate = this.activePage * this.pageLength;
-    pageToNavigate = (rowData.length > pageToNavigate ? pageToNavigate : rowData.length);
     let startIndex = ((this.activePage - 1) * this.pageLength);
+    /**Loop till row data lengh endpoint */
+    if(rowData.length > pageToNavigate){
+      pageToNavigate = pageToNavigate;
+      this.disableForwardArrow = false;
+    }else{
+      pageToNavigate = rowData.length;
+      this.disableForwardArrow = true;
+    }
+    /**Check if previous data is left or not */
+    if(startIndex == 0){
+      this.disableBackArrow = true;
+    }else{
+      this.disableBackArrow = false;
+    }
+    
     console.log("starrt index="+startIndex);
     console.log("pagetonavigate="+pageToNavigate);
     return rowData.slice(startIndex, pageToNavigate);
+  }
+
+  loadNextImage(): void{
+    this.activePage = this.activePage + 1;
+    console.log(this.activePage);
+    this.activeDataSource = this.getBlockData(this.preImageData);
+    console.log(this.preImageData);
+  }
+
+  loadPreviousImage():void{
+    this.activePage = this.activePage - 1;
+    this.activeDataSource = this.getBlockData(this.preImageData);
   }
 
   /**
@@ -79,7 +110,7 @@ export class GalleryComponent implements OnInit {
       height: 'auto',
       panelClass: 'imageview',
       data: {
-        url: {},
+        url: url,
       }
     });
     /** Reload images after closing dialog */

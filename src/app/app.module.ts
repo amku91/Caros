@@ -22,6 +22,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -63,6 +64,7 @@ import { PreviewComponent } from './components/preview/preview.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     NavbarComponent,
